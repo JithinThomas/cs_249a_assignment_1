@@ -1,0 +1,38 @@
+user: jithinpt (Thomas, Jithin Parayil)
+
+Architecture of the application
+================================
+
+Classes
+========
+
+* MalwareSim
+	* The MalwareSim::evalStream() method reads the input script line by line
+	* It parses each command and maps it one of the 9 command types (eg: networkNew, personalNew, etc.)
+		* Note that it ignores commands which are comments or are invalid due to extraneous args, etc.
+	* The MalwareSim class maintains an instance of the System class (described below)
+	* Once the type of the command is determined, it calls the appropriate method of the System object to make progress in the simulation
+
+* System
+	* This class encapsulates the core logic of the application.
+    * It maintains the entire state of a simulation such as the list of networks, etc.
+    * It exposes a public method corresponding to each of the 9 types of commands.
+		* Each command's return value indicates whether the command was run successfully or not
+		* If a command is skipped, a warning is printed to stderr
+
+* NetworkTracker
+	* Subclass of Network::Notifiee
+	* Overrides onDeviceNew() and onDeviceDel()
+	* Within onDeviceNew(), it creates a DeviceTracker instance for the newly created device and adds it to the device's notifiees
+
+* DeviceTracker
+	* Subclass of Device::Notifiee
+	* Overrides onHealth()
+
+
+Collaboration
+==============
+
+* Collaborated with Jayesh Y and Fuad Al-Amin regarding the testing of the code.
+* Shared test scripts and compared the outputs to ensure they match.
+* Jayesh pointed out a bug in my output for one of the scripts.
