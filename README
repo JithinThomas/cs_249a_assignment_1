@@ -1,5 +1,19 @@
 user: jithinpt (Thomas, Jithin Parayil)
 
+Building and running
+======================
+
+* Compiling the application code
+	* cd <ROOT>/src/malwaresim
+	* make
+	* The executable 'malwaresim' would be generated in the same folder, ie, src/malwaresim
+
+* Compiling and running the test suite
+	* NOTE: The Makefile assumes that the gtest framework is present in <ROOT>/gtest-1.7.0
+	* cd <ROOT>/tests/malwaresim
+	* make
+	* ./unittests
+
 Architecture of the application
 ================================
 
@@ -29,6 +43,39 @@ Classes
 	* Subclass of Device::Notifiee
 	* Overrides onHealth()
 
+Scripts used for testing
+==========================
+
+* These scripts are present in <ROOT>/tests/malwaresim. The expected output for each script is also given below
+
+* script1.txt
+	2 6 2 4 4 2
+
+* script2.txt
+	11 22 11 121 0 11
+	11 33 11 110 0 6
+	11 22 11 99 0 11
+	11 33 11 88 0 9
+	44 66 22 176 0 7
+
+* script3.txt
+	11 22 11 116 22 11
+	11 33 11 105 22 6
+	11 22 11 94 22 11
+	11 33 11 83 22 9
+	35 40 13 166 43 7
+
+* script4.txt
+	9 19 -0.75 8 8 5
+	0 1 -0.5 0 11 0
+	1 4 -1.25 0 11 1
+	1 2 -0.25 0 14 1
+
+* script5.txt
+	3 3 1.5 3 0 2
+	16 0 0 16 0 0
+	2 6 -1 7 8 2
+	0 1 -0.5 6 12 0
 
 Collaboration
 ==============
